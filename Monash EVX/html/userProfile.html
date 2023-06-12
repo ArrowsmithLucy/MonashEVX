@@ -1,0 +1,323 @@
+<!-- Subsystem 6: Viewing supplier information -->
+
+<!--
+
+Dev: Chutiwat Banyat ~ Edit Profile
+Dev: Lucy Arrowsmith ~ Message the supplier
+
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!--view port for responsive design-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <title>EdLink</title>
+  <!--Bootsrap script-->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+    crossorigin="anonymous"></script>
+  <script src="../js/localStorageOps.js"></script>
+  <!-- <script src="../js/profilePage.js"></script> -->
+  <script src="../js/login.js"></script>
+  <!-- CSS style sheets -->
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/userProfile.css">
+
+  <style>
+    .mainBox {
+      margin-top: 5px;
+      padding: 5px;
+    }
+  </style>
+</head>
+<!-- Header -->
+<div class="container-fluid">
+  <nav class="navbar navbar-expand-lg" style="padding-top: 0;">
+    <div class="container-fluid flex-column align-items-stretch" style="padding:0;">
+      <div class="row justify-content-between">
+        <div class="col-3">
+          <img class="navbar-brand" src="../img/logo/Logo_2.png" style="width:50%;" href="#">
+        </div>
+        <div class="col-2" style="width:10%;">
+          <button type="button" class="nav-btn" onclick="goToCart()">
+            <i class="bi bi-cart4"></i>
+          </button>
+          <button type="button" class="nav-btn">
+            <i class="bi bi-person-lines-fill nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false"></i>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li><a class="dropwdown-item" href="userProfile.html">Profile</a></li>
+              <li><a class="dropwdown-item" href="orders.html">Orders</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropwdown-item" href="login.html" id="login">Sign in</a></li>
+            </ul>
+          </button>
+        </div>
+      </div>
+      <div class="row justify-content-between" style="background-color: #65CEE4; height:41px;">
+        <div class="col-6">
+          <ul class="nav nav-tabs nav-fill">
+            <li class="nav-item">
+              <a class="nav-link nav-hover-colour" href="../index.html" style="color:black;">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link nav-hover-colour" href="msgCustomerTest.html" style="color:black;">Suppliers</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link nav-hover-colour" href="#" style="color:black;">About</a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-3">
+          <div class="input-group mb-3" style="height:41px;">
+            <input type="search" class="form-control" placeholder="Search">
+            <button type="button" class="search-btn" id="search">Search</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</div>
+
+<body style="background-color: white;">
+  <div class="container-fluid mb-5">
+    <div class="row justify-content-around mt-5">
+      <!-- User directives -->
+      <div class="col-3">
+        <div class="mt-2 mainBox" style="text-align: center;">
+          <div id="userProfile">
+            <img id="userAvata" src="" width="200" />
+          </div>
+        </div>
+        <div class="row mt-2 ms-5 me-5">
+          <select id="selProfileAvata" style="display: none;" class="form-select" onchange="updateAvata()">
+            <option value="1">Type 1</option>
+            <option value="2">Type 2</option>
+            <option value="3">Type 3</option>
+            <option value="4">Type 4</option>
+          </select>
+        </div>
+
+        <div class="row mt-2 ms-5 me-5">
+          <button class="btn btn-secondary btn-sm" id="btnChangeAvata" onclick="changeAvataTogelling()"
+            style="background-color:#6c757da3">Change profile
+            picture</button>
+        </div>
+        <div class="row mt-3 ms-5 me-5">
+          <div class="nav flex-column nav-pills me-3" id="profileTabs" role="tablist" aria-orientation="vertical"
+            style="padding:0;">
+            <button class="nav-link active" id="editProfileTab" data-bs-toggle="pill"
+              data-bs-target="#editProfileTabContent" type="button" role="tab" aria-controls="editProfileTabContent"
+              aria-selected="true">Edit Profile</button>
+            <button class="nav-link" id="messagesTab" data-bs-toggle="pill" data-bs-target="#messagesTabContent"
+              type="button" role="tab" aria-controls="messagesTabContent" aria-selected="false">Messages</button>
+          </div>
+        </div>
+      </div>
+      <!-- Tab content -->
+      <div class="col-8">
+        <div class="tab-content" id="tabContent">
+          <!-- Edit Profile -->
+          <div class="tab-pane fade show active" id="editProfileTabContent" role="tabpanel" aria-labelledby="v-pills-home-tab"
+            tabindex="0">
+            <div class="col">
+              <div class="row mainBox">
+                <div class="row ms-2 mt-2 mb-2">
+                  <div class="col-3">
+                    <label for="tftEmail">*Email:</label>
+                  </div>
+
+                  <div class="col-6">
+                    <input class="form-control" type="email" id="tftEmail" />
+                  </div>
+                </div>
+
+                <div class="row ms-2 mt-2 mb-2">
+                  <div class="col-3">
+                    <label for="tftEmail">*Password:</label>
+                  </div>
+
+                  <div class="col-6">
+                    <input class="form-control" type="password" id="tftPasswd" />
+                  </div>
+                </div>
+
+                <div class="row ms-2 mt-2 mb-2">
+                  <div class="col-3">
+                    <label for="tftName">*Name:</label>
+                  </div>
+
+                  <div class="col-6">
+                    <input class="form-control" type="text" id="tftName" />
+                  </div>
+                </div>
+
+                <div class="row ms-2 mt-2 mb-2">
+                  <div class="col-3">
+                    <label for="tftMName">Middle name:</label>
+                  </div>
+
+                  <div class="col-6">
+                    <input class="form-control" type="text" id="tftMName" />
+                  </div>
+                </div>
+
+                <div class="row ms-2 mt-2 mb-2">
+                  <div class="col-3">
+                    <label for="tftSName">*Surname name:</label>
+                  </div>
+
+                  <div class="col-6">
+                    <input class="form-control" type="text" id="tftSName" />
+                  </div>
+                </div>
+
+                <div class="row ms-2 mt-2 mb-2">
+                  <div class="col-3">
+                    <label for="tftAddr1">*Address 1:</label>
+                  </div>
+
+                  <div class="col-6">
+                    <input class="form-control" type="text" id="tftAddr1" />
+                  </div>
+                </div>
+
+                <div class="row ms-2 mt-2 mb-2">
+                  <div class="col-3">
+                    <label for="tftAddr2">Address 2:</label>
+                  </div>
+
+                  <div class="col-6">
+                    <input class="form-control" type="text" id="tftAddr2" />
+                  </div>
+                </div>
+
+                <div class="row ms-2 mt-2 mb-2">
+                  <div class="col-3">
+                    <label for="tftSurburb">*Surburb:</label>
+                  </div>
+
+                  <div class="col-6">
+                    <input class="form-control" type="text" id="tftSurburb" />
+                  </div>
+                </div>
+
+                <div class="row ms-2 mt-2 mb-2">
+                  <div class="col-3">
+                    <label for="selState">*State:</label>
+                  </div>
+
+                  <div class="col-6">
+                    <select class="form-select" type="text" id="selState">
+                      <option id="optVIC" value="VIC">Victoria</option>
+                      <option id="optQLD" value="QLD">Queensland</option>
+                      <option id="optNSW" value="NSW">New South Wales</option>
+                      <option id="optWA" value="WA">Western Australia</option>
+                      <option id="optWA" value="SA">South Australia</option>
+                      <option id="optNT" value="NT">Northern Territory</option>
+                      <option id="optTAS" value="TAS">Tasmania</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="row ms-2 mt-2 mb-2">
+                  <div class="col-3">
+                    <label for="tftPostcode">*Postcode:</label>
+                  </div>
+
+                  <div class="col-6">
+                    <input class="form-control" type="text" min="4" max="4" id="tftPostcode" />
+                  </div>
+                </div>
+
+                <div class="row ms-2 mt-2 mb-2" style="color: green;" id="positiveVerboseArea">
+                </div>
+
+                <div class="row ms-2 mt-2 mb-2" style="color: red;" id="negativeVerboseArea">
+                </div>
+
+
+                <div class="ms-2 mt-2 mb-2" style="text-align: right;">
+                  <div class="ms-2">
+                    <button class="btn btn-warning col-1" id="btnEditProfile" onclick="editButton()">Edit</button>
+
+                    <button class="btn btn-primary col-2 ms-2 me-2" style="display: none;" id="btnSaveProfile"
+                      onclick="updateUserInfromation()">Save Change</button>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <!--Message Area -->
+          <div class="tab-pane" id="messagesTabContent" role="tabpanel"
+            aria-labelledby="v-pills-profile-tab" tabindex="0">
+            <div class="row messageArea">
+              <div class="row headChat"></div>
+              <div class="row row-cols-2">
+                <!-- List-group headers -->
+                <div class="col-3 scroll"
+                  style="margin:0; border-left: 1px solid; border-right: 1px solid; padding:0; background-color:#f4f5f5de;">
+                  <div class="row" role="tabpanel">
+                    <div class="list-group" id="contacts" style="padding-left:11px;" role="tablist">
+                      <!-- Message previews -->
+                    </div>
+                  </div>
+                </div>
+                <!-- Tab content for messages -->
+                <div class="col-9" style="margin:0; padding:0; width:72.75%;">
+                  <div class="row tab-content messageChat scroll" style="margin:0; background-color: #f4f5f5de;"
+                    id="messageOutputArea">
+                    <!-- Display messages -->
+                  </div>
+                </div>
+
+                <!-- Chat inputs -->
+                <div class="row d-flex align-self-end" style="padding:0; margin:0; width: 787px;">
+                  <div class="input-group typeBox">
+                    <span class="input-group-text input-icon"><i class="bi bi-people"></i></span>
+                    <input class="form-control" id="tftChatMessage" type="text"
+                      placeholder="Type your message here..." />
+                    <button class="btn btn-primary" type="button" id="sendMessage" onclick="sendMessage()">Send<i
+                        class="bi bi-send" style="padding-left: 7px;"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal for editting message -->
+    <div class="modal fade" id="editMessage" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="staticBackdropLabel">Edit your message</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body mb-3">
+            <textarea class="form-control" id="msgArea" rows="5"></textarea>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-success" id="saveMsg" onclick="updateMessage()">Save</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="../js/messageSupplier.js"></script>
+    <script src="../js/universal.js"></script>
+</body>
+
+</html>

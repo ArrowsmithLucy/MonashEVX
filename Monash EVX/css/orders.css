@@ -1,0 +1,15 @@
+.changeText[aria-expanded=false] .collapseDetails {
+    display: none;
+}
+
+.changeText[aria-expanded=true] .expandDetails {
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
+.hide {
+    display: none;
+}

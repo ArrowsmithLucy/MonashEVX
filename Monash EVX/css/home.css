@@ -1,0 +1,11 @@
+/* Supplier's components body content for home page */
+.component:hover {
+    border: 1px solid;
+}
+
+.component {
+    background:#F5F5F5; 
+    margin: 5px;
+    padding-bottom: 10px;
+    max-width: 275px;
+}

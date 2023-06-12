@@ -1,0 +1,177 @@
+/* Styles for Supplier's information */
+
+
+.supp-img {
+  padding: 12px;
+}
+
+h4 {
+  padding: 10px;
+}
+
+p {
+  font-size: small;
+}
+
+/* Message the Supplier */
+.headChat {
+  height: 20px;
+  background-color: rgb(0 154 187 / 73%);
+  padding: 0 !important;
+  margin: 0!important;
+  border-radius: 5px 5px 0 0!important;
+  max-width: 787px;
+}
+
+.typeBox {
+  margin: 0;
+  padding: 0;
+}
+
+.chatBox {
+  margin-left: 20px;
+}
+
+.chatArea {
+  align-self: baseline;
+  border: 1.25px solid;
+  padding: 10px;
+}
+
+.messageArea {
+  margin: 0px;
+  padding: 0!important;
+  
+}
+
+.messageChat {
+  margin: 0;
+  border-right: 0.5px solid;
+  height: 312px;
+  padding: 10px 0 1px 12px;
+  align-content: flex-start;
+
+}
+
+.btn-primary {
+  border-radius: 0 0 5px 0!important;
+  --bs-btn-bg: rgb(0 154 187 / 73%);
+  --bs-btn-border-color: rgb(0 154 187 / 73%);
+  --bs-btn-color: #383838;
+  --bs-btn-hover-bg: #2c8597;
+  --bs-btn-hover-border-color: #2c8597;
+}
+
+.input-icon {
+  border-radius: 0 0 0 5px!important;
+  background-color: rgb(0 154 187 / 73%);
+  color: #383838;
+}
+
+.img-sup-logo-chat {
+  height: 30px;
+  width: 30px;
+}
+
+.scroll {
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.btn-group-sm>.btn {
+  --bs-btn-font-size: 0.7rem; 
+  padding: 1px 0;
+  border-radius: 5px;
+}
+
+
+#delete:hover {
+  background-color: #ff9797;
+  border: #ff9797;
+  padding: 2px;
+  border-radius: 5px;;
+  cursor:pointer;
+}
+#edit:hover {
+  background-color: #bfbfbf;
+  border: #bfbfbf;
+  padding: 2px;
+  border-radius: 5px;
+  cursor:pointer;
+}
+
+
+.nav-pills .nav-link.active,
+.show > .nav-link {
+  color: black;
+  background-color: #65CEE466;
+}
+
+#contact:focus:active {
+  background-color: grey;
+}
+
+#contactName {
+  font-size: x-small;
+  font-weight: 600;
+}
+#contactPreview {
+  font-size: xx-small;
+  font-weight: 400;
+}
+
+#contact {
+  border: none;
+}
+
+.list-group {
+  --bs-list-group-border-radius: 0; 
+}
+.list-group-item {
+  background-color: #65b2e417;
+}
+
+.list-group button {
+  height:  50px;
+  padding: 0 16px;
+}
+
+.list-group button p  {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.list-group-item.active {
+  background-color: #65b2e4a8;
+  border: #65b2e4a8;
+  color: black;
+}
+
+.noMsgs {
+  padding: 16px;
+  margin:0;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 700;
+  font-family: inherit;
+  color: #8080808a;
+}
+
+.inboxIcon {
+  color: #5c5c5c;
+  text-align: center;
+  font-size: 30px;
+}
+
+.bi-three-dots {
+  border-radius: 7px;
+  padding-left: 5px;
+  padding-right: 5px;
+  font-size: 12px;
+}
+
+.bi-three-dots:hover {
+  background-color: #c9c9c95e;
+}
+
